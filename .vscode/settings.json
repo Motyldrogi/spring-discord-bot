@@ -1,5 +1,3 @@
 {
-    "java.configuration.updateBuildConfiguration": "automatic",
-    "java.checkstyle.configuration": "/google_checks.xml",
-    "java.checkstyle.version": "8.43"
+    "java.configuration.updateBuildConfiguration": "automatic"
 }
