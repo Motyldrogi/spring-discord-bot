@@ -1,0 +1,23 @@
+language: java
+dist: trusty
+
+os:
+- linux
+- osx
+
+jdk:
+- openjdk11
+
+jobs:
+  include:
+  - os: linux
+    jdk: openjdk11
+  allow_failures:
+  - jdk: openjdk-ea
+  - jdk: oraclejdk-ea
+
+before_install:
+- unset _JAVA_OPTIONS
+
+script:
+- mvn clean install spring-boot:repackage

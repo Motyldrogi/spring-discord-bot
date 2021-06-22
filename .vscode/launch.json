@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ApplicationBootstrap<discord-bot>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.motyldrogi.app.ApplicationBootstrap",
+            "projectName": "discord-bot",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ApplicationBootstrap<discord-bot>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.motyldrogi.bot.ApplicationBootstrap",
+            "projectName": "discord-bot",
+            "args": ""
+        }
+    ]
+}
