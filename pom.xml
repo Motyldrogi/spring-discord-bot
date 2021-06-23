@@ -5,10 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.motyldrogi</groupId>
-  <artifactId>discord-bot</artifactId>
+  <artifactId>spring-discord-bot</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>discord-bot</name>
+  <name>spring-discord-bot</name>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
