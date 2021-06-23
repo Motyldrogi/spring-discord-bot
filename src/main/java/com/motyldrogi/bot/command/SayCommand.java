@@ -1,13 +1,13 @@
 package com.motyldrogi.bot.command;
 
 import java.awt.Color;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.motyldrogi.bot.command.defaults.CommandExecutor;
 import com.motyldrogi.bot.command.defaults.CommandInfo;
 import com.motyldrogi.bot.command.defaults.CommandSender;
+import com.motyldrogi.bot.component.DiscordMessage;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageEmbed;
@@ -19,24 +19,18 @@ public class SayCommand implements CommandExecutor {
 
   @CommandInfo(value = "say", minArguments = 1, maxArguments = Integer.MAX_VALUE, usage = "(?:{\"type\":\")(.*?)(?:\",.\"message\":\")(.*?)(?:\"})")
   @Override
-  public void execute(CommandSender commandSender, List<String> args) {
-
-    StringBuilder stringBuilder = new StringBuilder();
-
-    for (String arg : args) {
-      stringBuilder.append(arg).append(" ");
-    }
+  public void execute(DiscordMessage dMessage, CommandSender commandSender) {
 
     Pattern pattern = Pattern
         .compile("\\{\\s*\"type\"\\s*:\\s*(.*?)\\s*,\\s*\"message\"\\s*:\\s*(.*?)}");
-    Matcher matcher = pattern.matcher(stringBuilder.toString());
+    Matcher matcher = pattern.matcher(dMessage.getData());
 
     if (!matcher.find()) {
       this.performMessageFooter(commandSender, commandSender.getMessage("invalid-json"), Color.RED);
       return;
     }
 
-    JSONObject jsonObject = new JSONObject(stringBuilder.toString());
+    JSONObject jsonObject = new JSONObject(dMessage.getData());
 
     switch (jsonObject.getString("type")) {
       case "normal":

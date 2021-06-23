@@ -7,10 +7,9 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import com.motyldrogi.bot.command.defaults.CommandExecutor;
 import com.motyldrogi.bot.command.defaults.CommandInfo;
 import com.motyldrogi.bot.command.defaults.CommandSender;
+import com.motyldrogi.bot.component.DiscordMessage;
 import com.motyldrogi.bot.util.RestServiceType;
-
 import java.awt.Color;
-import java.util.List;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.MessageEmbed;
@@ -21,24 +20,18 @@ public class EightBallCommand implements CommandExecutor {
 
   @CommandInfo(value = "8ball", minArguments = 1, maxArguments = Integer.MAX_VALUE)
   @Override
-  public void execute(CommandSender commandSender, List<String> args) {
+  public void execute(DiscordMessage dMessage, CommandSender commandSender) {
     try {
       HttpResponse<JsonNode> httpResponse = Unirest
           .get(RestServiceType.ANIME_API_URL + "/img/8ball")
           .header("Accept", "application/json")
           .asJson();
 
-      StringBuilder stringBuilder = new StringBuilder();
-
-      for (String arg : args) {
-        stringBuilder.append(arg).append(" ");
-      }
-
       MessageChannel messageChannel = commandSender.getMessageChannel();
       String lastMessageId = messageChannel.getLatestMessageId();
       String lastMessage = messageChannel.retrieveMessageById(lastMessageId).complete().getContentRaw()
           .split(" ")[1];
-      String properMessage = stringBuilder.toString();
+      String properMessage = dMessage.getData();
 
       System.out.println("proper: " + properMessage);
       System.out.println("last: " + lastMessage);
@@ -55,7 +48,7 @@ public class EightBallCommand implements CommandExecutor {
 
       MessageEmbed messageEmbed = new EmbedBuilder()
           .setColor(Color.decode("#3b5998"))
-          .setTitle(stringBuilder.toString())
+          .setTitle(dMessage.getData())
           .setImage(httpResponse.getBody().getObject().getString("url"))
           .build();
 

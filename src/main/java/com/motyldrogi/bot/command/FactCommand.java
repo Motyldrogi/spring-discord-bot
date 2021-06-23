@@ -6,10 +6,10 @@ import com.mashape.unirest.http.Unirest;
 import com.motyldrogi.bot.command.defaults.CommandExecutor;
 import com.motyldrogi.bot.command.defaults.CommandInfo;
 import com.motyldrogi.bot.command.defaults.CommandSender;
+import com.motyldrogi.bot.component.DiscordMessage;
 import com.motyldrogi.bot.util.RestServiceType;
 
 import java.awt.Color;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageEmbed;
@@ -20,7 +20,7 @@ public class FactCommand implements CommandExecutor {
 
   @CommandInfo("fact")
   @Override
-  public void execute(CommandSender commandSender, List<String> args) {
+  public void execute(DiscordMessage dMessage, CommandSender commandSender) {
     try {
       HttpResponse<JsonNode> httpResponse = Unirest.get(RestServiceType.ANIME_API_URL + "/fact")
           .header("Accept", "application/json")

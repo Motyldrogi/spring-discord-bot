@@ -1,9 +1,9 @@
 package com.motyldrogi.bot.command.defaults;
 
-import java.util.List;
+import com.motyldrogi.bot.component.DiscordMessage;
 
 public interface CommandExecutor {
 
-  void execute(CommandSender commandSender, List<String> args);
+  void execute(DiscordMessage dMessage, CommandSender commandSender);
 
 }

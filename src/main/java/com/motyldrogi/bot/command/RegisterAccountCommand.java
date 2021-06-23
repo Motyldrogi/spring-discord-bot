@@ -3,12 +3,12 @@ package com.motyldrogi.bot.command;
 import java.awt.Color;
 import java.sql.Date;
 import java.time.Instant;
-import java.util.List;
 import java.util.Optional;
 
 import com.motyldrogi.bot.command.defaults.CommandExecutor;
 import com.motyldrogi.bot.command.defaults.CommandInfo;
 import com.motyldrogi.bot.command.defaults.CommandSender;
+import com.motyldrogi.bot.component.DiscordMessage;
 import com.motyldrogi.bot.entity.impl.UserEntityImpl;
 import com.motyldrogi.bot.repository.UserRepository;
 
@@ -35,7 +35,7 @@ public class RegisterAccountCommand implements CommandExecutor {
 
   @CommandInfo("register")
   @Override
-  public void execute(CommandSender commandSender, List<String> args) {
+  public void execute(DiscordMessage dMessage, CommandSender commandSender) {
     long userId = commandSender.getJdaUser().getIdLong();
 
     Optional<UserEntityImpl> optionalUserEntity = userRepository.findById(userId);

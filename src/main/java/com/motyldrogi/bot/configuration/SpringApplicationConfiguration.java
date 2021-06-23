@@ -2,8 +2,8 @@ package com.motyldrogi.bot.configuration;
 
 import com.motyldrogi.bot.command.defaults.impl.CommandRegistry;
 import com.motyldrogi.bot.component.MessageComponent;
-import com.motyldrogi.bot.service.BotService;
-import com.motyldrogi.bot.service.impl.BotServiceImpl;
+import com.motyldrogi.bot.service.DiscordService;
+import com.motyldrogi.bot.service.impl.DiscordServiceImpl;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,14 +21,13 @@ public class SpringApplicationConfiguration {
   }
 
   @Bean
-  public BotService botService() {
-    return new BotServiceImpl();
+  public DiscordService botService() {
+    return new DiscordServiceImpl(this.messageComponent, this.properties);
   }
 
   @Bean
   public CommandRegistry commandRegistryBean() {
-    return new CommandRegistry(this.messageComponent, this.botService(),
-        this.properties);
+    return new CommandRegistry(this.botService());
   }
 
 }

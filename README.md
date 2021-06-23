@@ -16,8 +16,8 @@ Adding a Command
 
 Every bot command should be a part of the `com.motyldrogi.bot.command` package and implement the `CommandExecutor` class, implementing the `execute()` method at bare-minimum. The `execute()` method expectes two arguments:
 
+- **dMessage (DiscordMessage)**: The `DiscordMessage` object which contains the full information about the message
 - **commandSender (CommandSender)**: The class for sending messages and also for localization
-- **args (String List)**: List of every argument (word) after the command
 
 The `execute()` method needs a `CommandInfo()` annotation to work, the `CommandInfo()` annotation can have the following arguments:
 
@@ -31,10 +31,10 @@ For example, the following command echos back the message received in an embeded
 ```java
 package com.motyldrogi.bot.command;
 
-import java.util.List;
 import com.motyldrogi.bot.command.defaults.CommandExecutor;
 import com.motyldrogi.bot.command.defaults.CommandInfo;
 import com.motyldrogi.bot.command.defaults.CommandSender;
+import com.motyldrogi.bot.component.DiscordMessage;
 import org.springframework.stereotype.Component;
 import java.awt.Color;
 import net.dv8tion.jda.api.EmbedBuilder;
@@ -45,24 +45,17 @@ public class EchoCommand implements CommandExecutor {
 
   @CommandInfo(value = "echo", minArguments = 1, maxArguments = 1, usage = "<message>")
   @Override
-  public void execute(CommandSender commandSender, List<String> args) {
-
-    StringBuilder stringBuilder = new StringBuilder();
-
-    for (String arg : args) {
-      stringBuilder.append(arg).append(" ");
-    }
+  public void execute(DiscordMessage dMessage, CommandSender commandSender) {
 
     MessageEmbed messageEmbed = new EmbedBuilder()
           .setColor(Color.decode("#ffffff"))
-          .setTitle("You said..")
-          .setDescription(stringBuilder.toString())
+          .setTitle(dMessage.getSentBy() + " said..")
+          .setDescription(dMessage.getData())
           .build();
 
     commandSender.sendEmbedMessage(messageEmbed);
   }
 }
-
 ```
 
 If you created a command, you have to register it:
