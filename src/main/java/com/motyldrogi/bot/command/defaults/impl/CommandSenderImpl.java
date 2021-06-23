@@ -1,25 +1,19 @@
 package com.motyldrogi.bot.command.defaults.impl;
 
 import java.util.List;
-
 import com.motyldrogi.bot.command.defaults.CommandSender;
 import com.motyldrogi.bot.component.MessageComponent;
-
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.MessageEmbed;
-import net.dv8tion.jda.api.entities.User;
 
 public class CommandSenderImpl implements CommandSender {
 
   private final MessageChannel messageChannel;
   private final MessageComponent messageComponent;
-  private final User user;
 
-  public CommandSenderImpl(MessageChannel messageChannel,
-      MessageComponent messageComponent, User user) {
+  public CommandSenderImpl(MessageChannel messageChannel, MessageComponent messageComponent) {
     this.messageChannel = messageChannel;
     this.messageComponent = messageComponent;
-    this.user = user;
   }
 
   @Override
@@ -55,11 +49,6 @@ public class CommandSenderImpl implements CommandSender {
   @Override
   public MessageChannel getMessageChannel() {
     return this.messageChannel;
-  }
-
-  @Override
-  public User getJdaUser() {
-    return this.user;
   }
 
 }

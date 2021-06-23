@@ -1,10 +1,8 @@
 package com.motyldrogi.bot.command.defaults;
 
 import java.util.List;
-
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.MessageEmbed;
-import net.dv8tion.jda.api.entities.User;
 
 public interface CommandSender {
 
@@ -21,7 +19,5 @@ public interface CommandSender {
   void sendEmbedMessage(MessageEmbed message);
 
   MessageChannel getMessageChannel();
-
-  User getJdaUser();
 
 }

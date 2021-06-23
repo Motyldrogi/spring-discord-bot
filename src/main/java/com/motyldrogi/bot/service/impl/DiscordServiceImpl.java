@@ -83,8 +83,7 @@ public class DiscordServiceImpl implements DiscordService {
 
   private void processCommand(DiscordMessage dMessage) {
     MessageChannel messageChannel = dMessage.getEvent().getChannel();
-    CommandSender commandSender = new CommandSenderImpl(messageChannel, messageComponent,
-      dMessage.getEvent().getAuthor());
+    CommandSender commandSender = new CommandSenderImpl(messageChannel, messageComponent);
     Command command = dMessage.getCommandData();
 
     List<String> args = Arrays.stream(dMessage.getEvent().getMessage().getContentRaw().split(" ")).skip(1)

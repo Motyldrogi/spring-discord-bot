@@ -39,7 +39,6 @@ public class ApplicationBootstrap implements CommandLineRunner {
     );
 
     this.commandRegistry.registerByExecutors(
-        new RegisterAccountCommand(userRepository),
         new GitHubCommand(),
         new SayCommand(),
         new FactCommand(),
