@@ -34,18 +34,6 @@ public class CommandRegistry {
     this.properties = properties;
   }
 
-  @SafeVarargs
-  public final void registerByClasses(Class<? extends CommandExecutor>... classes) {
-    try {
-      for (Class<? extends CommandExecutor> _class : classes) {
-        CommandExecutor commandExecutor = _class.getDeclaredConstructor().newInstance();
-        this.registerByExecutors(commandExecutor);
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
-
   public void registerByExecutors(CommandExecutor... commandExecutors) {
     for (CommandExecutor commandExecutor : commandExecutors) {
       Method[] methods = commandExecutor.getClass().getMethods();
