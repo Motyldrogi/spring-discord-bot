@@ -1,10 +1,6 @@
 package com.motyldrogi.bot;
 
-import com.motyldrogi.bot.command.EightBallCommand;
-import com.motyldrogi.bot.command.FactCommand;
-import com.motyldrogi.bot.command.GitHubCommand;
-import com.motyldrogi.bot.command.RegisterAccountCommand;
-import com.motyldrogi.bot.command.SayCommand;
+import com.motyldrogi.bot.command.*;
 import com.motyldrogi.bot.command.defaults.impl.CommandRegistry;
 import com.motyldrogi.bot.listener.GuildMemberJoinListener;
 import com.motyldrogi.bot.repository.UserRepository;
