@@ -77,7 +77,6 @@ this.commandRegistry.registerByExecutors(
 - [x] Storing all user's data to mysql database
 - [x] Public rest api without oauth
 - [x] Github command, that shows infos about your github profile
-- [x] Commit command - displays commits' count
 - [x] Say command, that talks in json
 
 ## Endpoints

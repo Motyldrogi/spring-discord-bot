@@ -1,6 +1,5 @@
 package com.motyldrogi.bot;
 
-import com.motyldrogi.bot.command.CommitCommand;
 import com.motyldrogi.bot.command.EightBallCommand;
 import com.motyldrogi.bot.command.FactCommand;
 import com.motyldrogi.bot.command.GitHubCommand;
@@ -46,7 +45,6 @@ public class ApplicationBootstrap implements CommandLineRunner {
     this.commandRegistry.registerByExecutors(
         new RegisterAccountCommand(userRepository),
         new GitHubCommand(),
-        new CommitCommand(),
         new SayCommand(),
         new FactCommand(),
         new EightBallCommand()
