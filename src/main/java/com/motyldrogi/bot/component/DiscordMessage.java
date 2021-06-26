@@ -8,8 +8,8 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public class DiscordMessage {
 
-    MessageReceivedEvent event;
-    Command commandData;
+    private final MessageReceivedEvent event;
+    private final Command commandData;
 
     private String prefix;
     private String rawMessage;

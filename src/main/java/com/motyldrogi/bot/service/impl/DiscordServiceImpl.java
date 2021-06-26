@@ -73,10 +73,11 @@ public class DiscordServiceImpl implements DiscordService {
   }
 
   public void processMessage(MessageReceivedEvent event, Command command) {
-    DiscordMessage dMessage = new DiscordMessage(event, command, properties.getPrefix());
-
     String messageContent = event.getMessage().getContentRaw();
+
     if (messageContent.startsWith(properties.getPrefix() + command.getName())) {
+      DiscordMessage dMessage = new DiscordMessage(event, command, properties.getPrefix());
+      
       this.processCommand(dMessage);
     }
   }
