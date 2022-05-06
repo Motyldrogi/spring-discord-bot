@@ -1,5 +1,5 @@
 # Spring Boot Discord Bot
-Discord all-purpose bot, made using Spring Boot 2.5.1, JPA, Hibernate, REST, HikariCP, JDA.
+Discord all-purpose bot, made using Spring Boot, JPA, Hibernate, REST, HikariCP, JDA.
 
 **TravisCI**<br>
 [![travis-icon]][travis]
